@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1 class="page-header">
-		CloudByteのプロジェクト<br>
-		<small>ユーザーログイン画面</small>
-	</h1>
-	<div>ログイン</div>
-	<form action="userLogin" method="post">
-
-		<label for="username" class="form-label">ユーザーID：</label><br>
-		<input type="text" id="username" placeholder="ユーザーID" name="username"><br>
-		<label for="password" class="form-label">パスワード：</label><br>
-		<input type="password" id="password" placeholder="パスワード"name="password"><br>
-		<label>
-		<input type="checkbox" name="remember">ログイン状態を保存する
-		<a href="register" class="text-center">新規登録</a>
-		</label><br>
-		<button type="submit" class="btn btn-primary btn-block">ログイン</button>
-	</form>
-</body>
+	<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>
+			CloudByteのプロジェクト<br>
+			<small>ユーザーログイン画面</small>
+		</h1>
+		<div>ログイン</div>
+		<form action="userLogin" method="post">
+			<label for="username" class="form-label">ユーザーID：</label><br>
+			<input type="text" id="username" placeholder="ユーザーID" name="username"><br>
+			<label for="password" class="form-label">パスワード：</label><br>
+			<input type="password" id="password" placeholder="パスワード"name="password"><br>
+			<label>
+			<input type="checkbox" name="remember">ログイン状態を保存する
+			<a href="register" class="text-center">新規登録</a>
+			</label><br>
+			<button type="submit" class="btn btn-primary btn-block">ログイン</button>
+		</form>
+	</body>
 </html>
