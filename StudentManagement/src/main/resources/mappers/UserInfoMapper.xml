@@ -3,10 +3,10 @@
 
 <mapper namespace="co.jp.cloudbyte.StudentManagement.dao.UserInfoMapper">
 	<select id="selectUserInfo" resultType="co.jp.cloudbyte.StudentManagement.entity.UserInfo">
-		select
+		SELECT
 		*
-		from
-		user_info
-		where username = '${username}'
+		FROM
+		USERINFO
+		WHERE USERNAME = '${USERNAME}'
 	</select>
 </mapper>
