@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
 		<title>StudentManagement登录页面</title>
@@ -9,6 +9,9 @@
 			<h1>CloudByteのプロジェクト<br>
 			<small>ユーザーログイン画面</small>
 			</h1>
+		</div>
+		<div>
+			<p th:text="${errorMsg}">
 		</div>
 		<form action="userLogin" method="post">
 			<div>
