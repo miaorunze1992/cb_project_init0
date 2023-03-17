@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.jp.cloudbyte.StudentManagement.dao.UserInfoMapper">
+	<select id="selectUsername" resultType="co.jp.cloudbyte.StudentManagement.entity.User">
+		SELECT
+			*
+		FROM
+			USER_INFO
+		WHERE
+			USERNAME = "${username}"	
+	</select>
+	<select id="selectUserAll" resultType="co.jp.cloudbyte.StudentManagement.entity.User">
+		SELECT
+			*
+		FROM
+			USER_INFO
+	</select>
+	
+</mapper>
