@@ -8,7 +8,7 @@
 		FROM
 			USER_INFO
 		WHERE
-			USERNAME ="${username}"
+			USERNAME ='${username}'
 	</select>
 
 </mapper>

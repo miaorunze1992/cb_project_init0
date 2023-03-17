@@ -14,7 +14,7 @@ public class LoginServiceImpl implements LoginService {
 @Autowired
 UserInfoMapper userInfoMapper;
 
-@Override
+	@Override
 	public String checkUser(Model model,LoginForm loginForm) {
 
 	UserInfo userInfo = userInfoMapper.selectUserInfo(loginForm.getUsername());

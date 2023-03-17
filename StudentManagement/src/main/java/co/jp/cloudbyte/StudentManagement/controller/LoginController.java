@@ -14,7 +14,7 @@ public class LoginController {
 @Autowired
 LoginService loginService;
 
-@RequestMapping("userLogin")
+	@RequestMapping("userLogin")
 	public String userLogin(Model model,LoginForm loginForm) {
 
 		return loginService.checkUser(model, loginForm);
