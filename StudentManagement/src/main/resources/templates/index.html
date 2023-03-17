@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>CloudByteのプロジェクトユーザーログイン画面</h1>
-	<form action="user11" method="get">
+	<form action="userLogin" method="get">
 		<label for="username" class="form-label">
 		<i></i>ユーザーID：</label><input type="text" class="form-control" id="username" placeholder="ユーザーID" name="username"><br>
 
@@ -19,6 +19,7 @@
 		</label>
 		<button type="submit" class="btn btn-primary btn-block">ログイン</button>
 	</form>
+	<h2 th:text ="${errorMsg}"></h2>
 
 </body>
 </html>
