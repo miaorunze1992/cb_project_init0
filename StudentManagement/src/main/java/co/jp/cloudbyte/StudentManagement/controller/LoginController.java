@@ -21,6 +21,6 @@ public class LoginController {
 
 	@RequestMapping("register")
 	public String RegisterInto() {
-		return"user/search";
+		return"user/register";
 	}
 }
