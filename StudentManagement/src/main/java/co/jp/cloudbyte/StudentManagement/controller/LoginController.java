@@ -15,14 +15,14 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 	@RequestMapping("userLogin")
-	public String userLogin(Model model,LoginForm LoginForm) {
+	public String userLogin(Model model,LoginForm loginForm) {
 //		//创建接口实现LoginServiceImpl类的对象LoginServiceImpl
 //		LoginServiceImpl LoginServiceImpl=new LoginServiceImpl();
 //		//通过对象.方法调用LoginServiceImpl的checkUser()方法，result接收
 //		String result=LoginServiceImpl.checkUser(model, LoginForm);
 //		//方法的返回值是页面，可以直接分发
 //		return result;
-		return loginService.checkUser(model,LoginForm);
+		return loginService.checkUser(model,loginForm);
 	}
 
 	@RequestMapping("register")
