@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
 		<title>StudentManagement登录页面</title>
 	</head>
 	<body>
-			TODO　注册页面
+		<h4>ユーザー登録画面</h4>
+		<p th:text="${errorMsg}">
+		<form action="userRegister" method="post">
+			<label for="username">ユーザーID</label>
+			<input type="text" id="username" name="username" placeholder="ユーザーID" >
+			<br>
+			<label for="password">パスワード</label>
+			<input type="password" id="password" name="password" placeholder="パスワード" >
+			<br>
+			<label for="">性別</label>
+			<label for="gender1">男</label>
+			<input type="radio" id="gender1" name="gender" value="0" >
+			<label for="gender2">女</label>
+			<input type="radio" id="gender2" name="gender" value="1" checked >
+			<br>
+			<label for="address">住所</label>
+			<input type="text" id="address" name="address" placeholder="住所" >
+			<br>
+			
+			<label for="country">国籍</label>
+			<select id="country" name="country">
+				<option value="0">中国</option>
+				<option value="1">日本</option>
+				<option value="2">其他</option>
+			</select>
+			<br>
+			<label for="comment">備考</label>
+			<input type="text" id="comment" name="comment" placeholder="備考" >
+			<br>
+			<input type="submit" value="登録">
+			<input type="button" value="キャンセル" onclick="history.back()">
+		</form>
 	</body>
 </html>

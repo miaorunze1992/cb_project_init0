@@ -10,11 +10,65 @@
 		WHERE
 			USERNAME = "${username}"	
 	</select>
+	
+	
+	<insert id="insertUserInfo">
+		INSERT INTO 
+			USER_INFO 
+				(USERNAME,
+				`PASSWORD`,
+				GENDER,
+				ADDRESS,
+				COUNTRY,
+				`COMMENT`) 
+		VALUES 
+			('${username}',
+			'${password}',
+			${gender},
+			'${address}',
+			${country},
+			'${comment}')
+	</insert>
+	
+	
 	<select id="selectUserAll" resultType="co.jp.cloudbyte.StudentManagement.entity.User">
-		SELECT
-			*
-		FROM
+		SELECT 
+			USERNAME,
+			PASSWORD,
+			GENDER,
+			ADDRESS,
+			COUNTRY,
+			COMMENT
+		FROM 
 			USER_INFO
 	</select>
+	
+	<select id="selectUserByCondition" resultType="co.jp.cloudbyte.StudentManagement.entity.User">
+		SELECT 
+			USERNAME,
+			PASSWORD,
+			GENDER,
+			ADDRESS,
+			COUNTRY,
+			COMMENT
+		FROM 
+			USER_INFO
+		WHERE
+		 	1 = 1
+		 <if test="gender != null and gender !=''">
+		    AND GENDER = #{gender}
+		 </if>
+ 		 <if test="country != null and country !=''">
+		    AND COUNTRY = #{country}
+		 </if>
+	</select>
+	
+	<delete id="deleteUser">
+		DELETE FROM
+			USER_INFO
+		WHERE 
+			USERNAME = "${username}"	
+	</delete>
+
 	
 </mapper>

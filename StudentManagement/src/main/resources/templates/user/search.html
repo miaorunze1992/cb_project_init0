@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<title>StudentManagement登录页面</title>
+		<title>StudentManagement一览页面</title>
 	</head>
 	<body>
-			TODO 成功页面
+		<form action="searchByCondition" method="get">
+			<label for="country">国籍</label>
+			<select id="country" name="country">
+				<option value="" selected >-</option>
+				<option value="0">中国</option>
+				<option value="1">日本</option>
+				<option value="2">其他</option>
+			</select>
+			<label>性别</label>
+			<label for="gender1">男</label>
+			<input type="radio" id="gender1" name="gender" value="0">
+			<label for="gender2">女</label>
+			<input type="radio" id="gender2" name="gender" value="1">
+			<label for="gender3">全部</label>
+			<input type="radio" id="gender3" name="gender" value="" checked >
+			<br>
+			<input type="submit" value="検索">
+		</form>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>選択</th>
+					<th>No.</th>
+					<th>ユーザー名</th>
+					<th>パスワード</th>
+					<th>性別</th>
+					<th>住所</th>
+					<th>国籍</th>
+					<th>備考</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user,item:${allData}">
+					<td>
+						<input type="checkbox">
+					</td>
+					<td th:text="${item.index+1}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.gender==0 ? '男':'女'}"></td>
+                    <td th:text="${user.address}"></td>
+                    <td th:text="${user.country==0 ? '中国':user.country==1 ? '日本':'其他'}"></td>
+                    <td th:text="${user.comment}"></td>
+                   	<td>									
+						<input type="button" value="変更" onclick="window.location.href='editUser?username='+this.parentNode.parentNode.children[2].innerHTML">
+						<input type="button" value="削除" onclick="window.location.href='deleteUser?username='+this.parentNode.parentNode.children[2].innerHTML">
+					</td>
+                </tr>
+			</tbody>
+			
+				
+		</table>
+		<input type="button" value="新規登録">
+		<input type="button" value="一括削除">
 	</body>
 </html>

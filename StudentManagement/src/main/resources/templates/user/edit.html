@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>StudentManagement変更页面</title>
+	</head>
+	<body>
+		<h4>ユーザー変更画面</h4>
+		<p th:text="${errorMsg}">
+		<form action="userRegister" method="post">
+			<label for="username">ユーザーID</label>
+			<input type="text" id="username" name="username" th:value="${User.username}" placeholder="ユーザーID" >
+			<br>
+			<label for="password">パスワード</label>
+			<input type="password" id="password" th:value="${User.password}"  name="password" placeholder="パスワード" >
+			<br>
+			<label for="">性別</label>
+			<label for="gender1">男</label>
+			<input type="radio" id="gender1" th:checked="*{User.gender eq 0}"  name="gender" value="0" >
+			<label for="gender2">女</label>
+			<input type="radio" id="gender2" th:checked="*{User.gender eq 1}"  name="gender" value="1" >
+			<br>
+			<label for="address">住所</label>
+			<input type="text" id="address" th:value="${User.address}" name="address" placeholder="住所" >
+			<br>
+			
+			<label for="country">国籍</label>
+			<select id="country" name="country">
+				<option value="0" th:selected="*{User.country eq 0}">中国</option>
+				<option value="1" th:selected="*{User.country eq 1}">日本</option>
+				<option value="2" th:selected="*{User.country eq 2}">其他</option>
+			</select>
+			<br>
+			<label for="comment">備考</label>
+			<input type="text" id="comment" th:value="${User.comment}" name="comment" placeholder="備考" >
+			<br>
+			<input type="submit" value="変更">
+			<input type="button" value="キャンセル" onclick="history.back()">
+		</form>
+	</body>
+</html>
