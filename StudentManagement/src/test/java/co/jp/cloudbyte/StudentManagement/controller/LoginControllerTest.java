@@ -39,8 +39,8 @@ public class LoginControllerTest {
 	@Test
 	public void testRegisterInto_正常系(){
 		//接收RegisterInto的返回值
-		String tsetResult = loginController.RegisterInto();
-		Assertions.assertEquals("user/register", tsetResult);
+		String testResult = loginController.RegisterInto();
+		Assertions.assertEquals("user/register", testResult);
 	}
 	
 	@Test
@@ -50,15 +50,15 @@ public class LoginControllerTest {
 		//默认得到的结果为index
 		//
 		Mockito.when(loginService.Logincheck(null, formLogin)).thenReturn("index");
-		String tsetResult = loginController.UserLogin(null,formLogin);
-		Assertions.assertEquals("index", tsetResult);
+		String testResult = loginController.UserLogin(null,formLogin);
+		Assertions.assertEquals("index", testResult);
 	}
 	
 	@Test
 	public void testUserLogin_異常系(){
 		FormLogin formLogin = new FormLogin();
-		String tsetResult = loginController.UserLogin(null,formLogin);
-		Assertions.assertEquals(null, tsetResult);
+		String testResult = loginController.UserLogin(null,formLogin);
+		Assertions.assertEquals(null, testResult);
 	}
 	
 	@AfterEach

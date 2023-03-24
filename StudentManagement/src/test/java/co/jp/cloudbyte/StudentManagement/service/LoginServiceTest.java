@@ -32,7 +32,7 @@ public class LoginServiceTest {
 	
 	@BeforeAll
 	static void initAll() {
-		System.out.println("========LoginController Test Start========");
+		System.out.println("========LoginService Test Start========");
 	}
 	
 	@BeforeEach
@@ -48,9 +48,9 @@ public class LoginServiceTest {
 		//当作数据库接收到到值为null
 		Mockito.when(userInfoMapper.selectUsername(any())).thenReturn(null);
 		
-		String tsetResult = loginService.Logincheck(mockModel,formLogin);
+		String testResult = loginService.Logincheck(mockModel,formLogin);
 		//断言  用户不存在 if语句（userInfo==null）
-		Assertions.assertEquals("index", tsetResult);
+		Assertions.assertEquals("index", testResult);
 	}
 	
 	@Test
@@ -64,9 +64,9 @@ public class LoginServiceTest {
 		//当作数据库接收到到值为null
 		Mockito.when(userInfoMapper.selectUsername(any())).thenReturn(user);
 		
-		String tsetResult = loginService.Logincheck(mockModel,formLogin);
+		String testResult = loginService.Logincheck(mockModel,formLogin);
 		//断言  用户不存在 if语句（userInfo==null）
-		Assertions.assertEquals("user/Search", tsetResult);
+		Assertions.assertEquals("user/search", testResult);
 	}
 	
 	@Test
@@ -80,9 +80,9 @@ public class LoginServiceTest {
 		//当作数据库接收到到值为null
 		Mockito.when(userInfoMapper.selectUsername(any())).thenReturn(user);
 		
-		String tsetResult = loginService.Logincheck(mockModel,formLogin);
+		String testResult = loginService.Logincheck(mockModel,formLogin);
 		//断言  用户不存在 if语句（userInfo==null）
-		Assertions.assertEquals("index", tsetResult);
+		Assertions.assertEquals("index", testResult);
 	}
 
 	@AfterEach
@@ -92,6 +92,6 @@ public class LoginServiceTest {
 	
 	@AfterAll
 	static void tearDownAll() {
-		System.out.println("========LoginController Test End========");
+		System.out.println("========LoginService Test End========");
 	}
 }

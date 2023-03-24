@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
-		<title>StudentManagement登录页面</title>
+		<title>StudentManagement変更页面</title>
 	</head>
 	<body>
 		<div>
-			<h4>ユーザー登録画面</h4>
+			<h4>ユーザー変更画面</h4>
 		</div>
 		<div>
 			<p th:text="${errorMsg}">
@@ -60,7 +60,7 @@
 				</tr>
 			</table>
 			<div>
-				<button type="submit">登録</button>
+				<button type="submit">変更</button>
 				<button type="button" onclick="javascript:window.history.back(-1)">キャンセル</button>
 			</div>
 			</form>

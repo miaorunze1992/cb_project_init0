@@ -27,9 +27,7 @@ public class LoginServiceImpl implements LoginService{
 			return "index";
 		}
 		//用户密码正确跳转页面 user/Search跳转,且输出数据
-		//检测是否有数据
-		System.out.println(userInfo);
-		System.out.println(userInfoMapper.selectUserAll());
-		return "user/Search";
+			model.addAttribute("users", userInfoMapper.selectUserAll());
+		return "user/search";
 	}
 }

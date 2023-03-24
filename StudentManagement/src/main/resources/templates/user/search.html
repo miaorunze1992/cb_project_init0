@@ -1,10 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
 		<title>StudentManagement登录页面</title>
 	</head>
 	<body>
-			TODO 成功页面
+		<div>
+			<h1>ユーザー一覧画面</h1><br>
+		</div>
+		<div>
+			<form action="searchByCondition" method="get">
+				<table>
+					<tr>
+						<td>
+							<label for="country">国籍</label>
+						</td>
+						<td>
+							<select name="country" id="country">
+								<option value="" selected>-</option>
+								<option value="0">中国</option>
+								<option value="1">日本</option>
+								<option value="2">其他</option>
+							</select>
+						</td>
+						<td style="width: 10%;"></td>
+						<td>
+							性別
+						</td>
+						<td>
+							<label for="gender0">
+								男<input type="radio" name="gender" id="gender0" value="0">
+							</label>
+							<label for="gender1">
+								女<input type="radio" name="gender" id="gender1" value="1">
+							</label>
+							<label for="gender2">
+								全部<input type="radio" name="gender" id="gender2" value="" checked>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+				  		<td style="text-align: right">
+				  		 	<button type="submit">
+				  		 		検索
+				  			 </button>
+				  		</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div>
+			<table border="1"  style="text-align:center;border-collapse: collapse;">
+				<thead>
+					<tr>
+						<th>選択</th>
+						<th>No.</th>
+						<th>ユーザー名</th>
+						<th>パスワード</th>
+						<th>性別</th>
+						<th>住所</th>
+						<th>国籍</th>
+						<th>備考</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each = "user:${users}">
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>
+							<p th:text="${userStat.count}">
+						</td>
+						<td>
+							<p th:text="${user.username}">
+						</td>
+						<td>
+							<p th:text="${user.password}">
+						</td>
+						<td>
+							<div th:switch="${user.gender}" >
+								<span th:case="0">男</span>
+								<span th:case="1">女</span>
+							</div>
+						</td>
+						<td>
+							<p th:text="${user.address}">
+						</td>
+						<td>
+							<div th:switch="${user.country}">
+								<span th:case="0">中国</span>
+								<span th:case="1">日本</span>
+								<span th:case="2">其他</span>
+							</div>
+						</td>
+						<td>
+							<p th:text="${user.comment}">
+						</td>
+						<td>
+							<button type="button" onclick="window.location.href='userInitEdit?username=' + this.parentNode.parentNode.children[2].innerHTML">変更</button>
+							<button type="button">削除</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<button type="button" onclick="window.location.href='register'">新規登録</button>
+			<button type="button">一括削除</button>
+		</div>
 	</body>
 </html>
