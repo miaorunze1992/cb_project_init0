@@ -21,12 +21,37 @@ public class SearchServiceImpl implements SearchService{
 	}
 
 	@Override
-	public String upDateUser(Model model,@RequestParam("username")String username) {
+	public String EditUser(Model model,@RequestParam("username")String username) {
 		
-		System.out.println(username);
+		model.addAttribute("user", userInfoMapper.selectUsername(username));
 		
 		return "user/edit";
 	}
+
+	@Override
+	public String DeleteUser(Model model, String username) {
+		
+		userInfoMapper.DeleteUser(username);
+		model.addAttribute("users", userInfoMapper.selectUserAll());
+		return "user/search";
+	}
+
+//	@Override
+//	public String DeleteChecked(Model model, String nameArr) {
+//	
+//		String[] nameArrArray = nameArr.split(",");
+//
+//		for(int i=0;i<nameArrArray.length;i++) {
+//			userInfoMapper.DeleteUser(nameArrArray[i]);
+//		}
+//		return "user/search";
+//	}
+//	@Override
+//	public String userSearchAll(Model model) {
+//		// TODO 自動生成されたメソッド・スタブ
+//		model.addAttribute("users", userInfoMapper.selectUserAll());
+//		return "user/search";
+//	}
 
 }
 

@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<title>StudentManagement登录页面</title>
 	</head>
 	<body>
@@ -54,7 +55,7 @@
 			</form>
 		</div>
 		<div>
-			<table border="1"  style="text-align:center;border-collapse: collapse;">
+			<table border="1" style="text-align:center;" th:fragment="list" id="list">
 				<thead>
 					<tr>
 						<th>選択</th>
@@ -71,26 +72,20 @@
 				<tbody>
 					<tr th:each = "user:${users}">
 						<td>
-							<input type="checkbox">
+							<input type="checkbox" name="checkedTd">
 						</td>
-						<td>
-							<p th:text="${userStat.count}">
-						</td>
-						<td>
-							<p th:text="${user.username}">
-						</td>
-						<td>
-							<p th:text="${user.password}">
-						</td>
+						<td th:text="${userStat.count}"></td>
+						<td th:text="${user.username}"></td>
+						<td th:text="${user.password}"></td>
+						<!-- 最好用三元   <td th:text="${user.gender==0 ? '男':'女'}"></td>-->
 						<td>
 							<div th:switch="${user.gender}" >
 								<span th:case="0">男</span>
 								<span th:case="1">女</span>
 							</div>
 						</td>
-						<td>
-							<p th:text="${user.address}">
-						</td>
+						<td th:text="${user.address}"></td>
+						<!-- 最好用三元  <td th:text="${user.country==0 ? '中国':user.country==1?'日本':'其他'-->	
 						<td>
 							<div th:switch="${user.country}">
 								<span th:case="0">中国</span>
@@ -98,20 +93,53 @@
 								<span th:case="2">其他</span>
 							</div>
 						</td>
-						<td>
-							<p th:text="${user.comment}">
-						</td>
-						<td>
-							<button type="button" onclick="window.location.href='userInitEdit?username=' + this.parentNode.parentNode.children[2].innerHTML">変更</button>
-							<button type="button">削除</button>
-						</td>
+						<td th:text="${user.comment}"></td>
+						<td>								
+							<input type="button" value="変更" onclick="window.location.href='editUser?username='+this.parentNode.parentNode.children[2].innerHTML">
+							<input type="button" value="削除" onclick="window.location.href='deleteUser?username='+this.parentNode.parentNode.children[2].innerHTML">
+						</td>	
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div>
-			<button type="button" onclick="window.location.href='register'">新規登録</button>
-			<button type="button">一括削除</button>
+			<button type="button" onclick="window.location.href='registerTo'">新規登録</button>
+			<button type="button" onclick="deleteChecked()">一括削除</button>
 		</div>
+		<script>
+		 function deleteChecked(){
+			let inputObjs = document.getElementsByName('checkedTd');
+			const nameArr = [];
+			inputObjs.forEach(function (item){
+				if(item.checked){
+					nameArr.push(item.parentNode.parentNode.children[2].innerHTML);
+				}
+			})
+			console.log(nameArr.toString())	
+			//ajax局部刷新
+	 		 $.ajax({
+            url: "deleteChecked",
+            type: 'POST',
+            success: function (data) {
+                $("#list").html(data);
+            }
+        	}) 
+        
+			//ajaxajax页面全部刷新,且是进行error 
+		/*  $.ajax({          
+			url:"deleteChecked", 
+			dataType:"json",  
+			type:"post", 
+			async:"false",
+			data:{nameArr:nameArr.toString()},
+			success:function(){
+				alert(123);
+			},      
+			error:function(data){
+               location.replace('userSearch')
+			}
+		 	}); */
+		 }
+		</script>
 	</body>
 </html>

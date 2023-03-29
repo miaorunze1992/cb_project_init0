@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import co.jp.cloudbyte.StudentManagement.entity.User;
+import co.jp.cloudbyte.StudentManagement.form.FormEdit;
 import co.jp.cloudbyte.StudentManagement.form.FormRegister;
 import co.jp.cloudbyte.StudentManagement.form.FormSearch;
 
@@ -15,5 +16,7 @@ public interface UserInfoMapper {
 	int insetRegister(FormRegister formRegister) throws Exception;
 	List<User>selectUserAll();
 	List<User>selectByCondition(FormSearch formSearch);	
+	int DeleteUser(@Param("username")String username);
+	int upDateUser(FormEdit formEdit);
 	
 }

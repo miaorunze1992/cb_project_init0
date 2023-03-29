@@ -65,13 +65,19 @@
 		UPDATE
 			USER_INFO
 		SET
-			USERNAME = '${username}',
 			`PASSWORD`='${password}',
-			GENDER= '${gender}',
+			GENDER= ${gender},
 			ADDRESS='${address}',
-			COUNTRY='${country}',
+			COUNTRY=${country},
 			`COMMENT`='${comment}'
 		WHERE
 			USERNAME = '${username}';
 	</update>
+	
+	<delete id="DeleteUser">
+		DELETE FROM
+			USER_INFO
+		WHERE
+			USERNAME = '${username}';
+	</delete>
 </mapper>

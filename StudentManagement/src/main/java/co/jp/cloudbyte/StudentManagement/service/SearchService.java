@@ -9,5 +9,11 @@ public interface SearchService {
 	
 	public String selectUser(Model model,FormSearch formSearch);
 	
-	public String upDateUser(Model model,@RequestParam("username")String username);
+	public String EditUser(Model model,@RequestParam("username")String username);
+	
+	public String DeleteUser(Model model,@RequestParam("username")String username);
+	
+//	public String DeleteChecked(Model model,@RequestParam("nameArr") String nameArr);	
+//	public String userSearchAll(Model model);
+	
 }
