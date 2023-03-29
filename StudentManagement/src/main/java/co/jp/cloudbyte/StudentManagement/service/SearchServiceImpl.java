@@ -41,28 +41,21 @@ public class SearchServiceImpl implements SearchService{
 		model.addAttribute("allData", usersData);
 		return "user/search";
 	}
-
+	
 	@Override
-	public void deleteUserAll(Model model,Map<String, String> map) {
-		
-		List<User> usersData = userInfoMapper.selectUserAll();
-		
-		model.addAttribute("allData", usersData);
-		
-		String nameArr = map.get("nameArr");
-		String[] result = nameArr.split(",");
-		
-		for (String user : result) {
-			userInfoMapper.deleteUser(user);
+	public String DeleteChecked(Model model, String nameArr) {
+	
+		String[] nameArrArray = nameArr.split(",");
+
+		for(int i=0;i<nameArrArray.length;i++) {
+			userInfoMapper.deleteUser(nameArrArray[i]);
 		}
-		
+		return "user/search";
 	}
 
 	@Override
-	public void searchAll(Model model) {
-		List<User> usersData = userInfoMapper.selectUserAll();
-		model.addAttribute("allData", usersData);
-		
+	public void seachAll(Model model) {
+		model.addAttribute("allData",userInfoMapper.selectUserAll());
 	}
 	
 }

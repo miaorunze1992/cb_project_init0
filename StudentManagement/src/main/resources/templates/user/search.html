@@ -24,7 +24,7 @@
 			<br>
 			<input type="submit" value="検索">
 		</form>
-		<table border="1" >
+		<table border="1" id="updateArea" th:fragment="updateArea">
 			<thead>
 				<tr>
 					<th>選択</th>
@@ -60,17 +60,33 @@
 		<input type="button" value="新規登録" onclick="window.location.href = 'registerFromSearch'">
 		<input type="button" value="一括削除" onclick="deleteAllChecked()" >
 	</body>
-	
-	<script type="text/javascript">
+	<script>
 		function deleteAllChecked(){
-				var nameArr = [];
-				var data = document.getElementsByName("checkboxAll");
-				data.forEach(function (item,index){
-					if(item.checked){
-						nameArr.push(item.parentNode.parentNode.children[2].innerHTML);
-					}
-				})
-				console.log(nameArr);
-		}
+			var checkBoxObjs = document.getElementsByName("checkboxAll");
+			var nameArray = [];
+			checkBoxObjs.forEach(function (item,index){
+				if(item.checked){
+					var name = item.parentNode.parentNode.children[2].innerHTML;
+					nameArray.push(name)
+				}
+			})
+			console.log(nameArray)
+			
+			$.ajax({          
+				url:"deleteAllChecked", 
+				dataType:"json",  
+				type:"post", 
+				async:"false",
+				data:{nameArr:nameArray.toString()},
+				success:function(){
+					alert(123);
+				},      
+				error:function(data){
+	               //location.replace('userSearch')
+	               $("#updateArea").load("userSearch");
+				}
+		 	});
+		 }
 	</script>
+
 </html>

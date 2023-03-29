@@ -20,7 +20,9 @@ public class EditController {
 	@RequestMapping("/userEdit")
 	public String edit(Model model, FormEdit formEdit) {
 		editService.updateUser(model, formEdit);
+		System.out.println(formEdit);
 		return "user/Search";
+		//return searchService.searchByCondition(model, formSearch);
 	}
 	
 //	@Autowired
