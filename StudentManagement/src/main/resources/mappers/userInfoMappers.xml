@@ -69,6 +69,19 @@
 		WHERE 
 			USERNAME = "${username}"	
 	</delete>
+	
+	<update id="updateUser" >
+		 UPDATE 
+			USER_INFO
+ 		SET 
+	 		`PASSWORD`="${password}",
+	 		GENDER=${gender},
+	 		ADDRESS="${address}",
+	 		COUNTRY=${country},
+	 		`COMMENT`="${comment}"
+ 		WHERE 
+ 			USERNAME = "${username}"
+	</update>
 
 	
 </mapper>

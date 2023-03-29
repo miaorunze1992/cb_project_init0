@@ -1,7 +1,7 @@
 package co.jp.cloudbyte.StudentManagement.service;
 
-import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +41,28 @@ public class SearchServiceImpl implements SearchService{
 		model.addAttribute("allData", usersData);
 		return "user/search";
 	}
-	
-	
 
+	@Override
+	public void deleteUserAll(Model model,Map<String, String> map) {
+		
+		List<User> usersData = userInfoMapper.selectUserAll();
+		
+		model.addAttribute("allData", usersData);
+		
+		String nameArr = map.get("nameArr");
+		String[] result = nameArr.split(",");
+		
+		for (String user : result) {
+			userInfoMapper.deleteUser(user);
+		}
+		
+	}
+
+	@Override
+	public void searchAll(Model model) {
+		List<User> usersData = userInfoMapper.selectUserAll();
+		model.addAttribute("allData", usersData);
+		
+	}
+	
 }
